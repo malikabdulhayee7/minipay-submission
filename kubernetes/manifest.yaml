@@ -22,20 +22,17 @@ spec:
         - name: api
           image: nginx:alpine
           ports:
-            - containerPort: 8080
-          env:
-            - name: DB_HOST
-              value: "minipay-db"
+            - containerPort: 80
           readinessProbe:
             httpGet:
               path: /
-              port: 8080
+              port: 80
             initialDelaySeconds: 2
             periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /
-              port: 8080
+              port: 80
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:
@@ -56,4 +53,4 @@ spec:
     app: minipay-api
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 80
